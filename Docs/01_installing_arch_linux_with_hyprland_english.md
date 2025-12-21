@@ -95,7 +95,7 @@ mount /dev/sda1 /mnt/boot
 ```bash
 ### Install basic software
 pacstrap -K /mnt base linux linux-firmware base-devel lvm2
-dhcpcd net-tools iproute2 networkmanager vim micro efibootmgr iwd
+net-tools iproute2 networkmanager vim micro efibootmgr iwd
 
 # Generate fstab
 genfstab -U /mnt >> /mnt/etc/fstab
@@ -123,7 +123,7 @@ passwd
 # Add a new user and configure permissions
 useradd -m -G wheel,users,video -s /bin/bash user
 passwd user
-systemctl enable dhcpcd
+systemctl enable NetworkManager
 systemctl enable iwd.service
 
 micro /etc/mkinitcpio.conf
